@@ -1,0 +1,21 @@
+.nb {
+    padding: 0px 6px;
+    margin: 0px 2px;
+    border-radius: 4px;
+    transition: 0.5s;
+}
+
+.nb:hover{
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+}
+
+body{
+    background-color: #e2ecf9;
+}
+
+
+section{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}

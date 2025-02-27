@@ -1,0 +1,98 @@
+.fixed {position: fixed;}
+.relative { position: relative;}
+.absolute { position: absolute;}
+
+.bb { box-sizing: border-box;}
+
+button:hover{cursor: pointer;}
+
+.center{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1%;
+}
+
+.center-text-x {text-align: center;}
+.br5{border-radius: 5px;}
+.br10{border-radius: 10px;}
+
+.flex{display: flex;}
+.flex-x{flex-direction: row;}
+.flex-y{flex-direction: column;}
+.flex-x-center { justify-content: center; }
+.flex-y-center { align-items: center;}
+.flex-left {justify-content: left;}
+.flex-right{justify-content: right;}
+.flex-grow-1{flex-grow: 1;}
+.flex-grow-2{flex-grow: 2;}
+.flex-grow-3{flex-grow: 3;}
+
+
+.opt > div{padding: 1%;}
+
+.pad-1{padding: 1%;}
+.pad-2{padding: 2%;}
+.pad-5{padding: 5%;}
+.pad-lr{padding : 0 5px 0 5px;}
+.mar-1{margin: 1%;}
+.mar-5{margin: 5%;}
+.mar-lr{margin : 0 5px 0 5px;}
+.mar-tb{margin : 5px 0 5px 0;}
+.mar-lr-15{margin : 0 15px 0 15px;}
+.mar-tb-15{margin : 15px 0 15px 0;}
+.mt-1 {margin-top: 1%;}
+.hide{display: none;}
+.w100{width: 100%;}
+.w75{width: 75%;}
+.w50{width: 50%;}
+.h100{height: 100%;}
+.sbor{border: 1px solid black;}
+
+a:hover{cursor: pointer;}
+.hover{ transition: 0.3s;}
+.hover:hover{ cursor: pointer; box-shadow: rgba(189, 189, 189, 0.2) 0px 7px 29px 0px;}
+
+input, button {
+    
+    height: fit-content;
+    padding: 6px;
+    margin: 0.5%;
+    border-radius: 5px;
+
+}
+
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.bgreen{background-color: rgb(102, 247, 138);}
+.bblue{background-color: rgb(103, 174, 255);}
+.bred{background-color: rgb(247, 102, 102);}
+.byellow{background-color: rgb(255, 253, 120);}
+.bgrey{background-color: rgb(197, 197, 197);}
+.white{background: linear-gradient(to right bottom, white,#dce8f9);box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;; color: black;}
+.black{background-color: black; color: white;}
+
+@media screen and (min-width: 650px) {
+    
+    .rxflex{ 
+        display: flex; flex-direction: row;
+        justify-content: center;  /* Horizontally center-align all items */
+        align-items: center;
+    }
+    .ryflex{ display: flex; flex-direction: column;}
+
+}
+
+@media screen and (max-width: 650px) {
+    
+    .rxflex{ 
+        display: flex; flex-direction: column;
+        justify-content: center;  /* Horizontally center-align all items */
+    align-items: center;
+    }
+    .ryflex{ display: flex; flex-direction: row;}
+
+}

@@ -1,0 +1,18 @@
+#GetStarted{
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.s1 {
+    background-color: rgb(250, 249, 245);
+}
+
+.s2 {
+    background-color: rgb(250, 244, 234);
+}
+
+.single{
+    border-radius: 30px;
+}

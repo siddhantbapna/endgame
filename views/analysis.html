@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Dashboard with Graphs</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        .dashboard {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .charts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .notes {
+            height: 100px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Student Performance Dashboard</h1>
+
+        <div class="charts">
+            <div class="chart-container">
+                <h2>Hourly Performance</h2>
+                <canvas id="hourlyPerformanceChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h2>Overall Performance</h2>
+                <canvas id="overallPerformanceChart"></canvas>
+            </div>
+        </div>
+
+        <textarea class="notes" placeholder="Add notes or feedback about performance..."></textarea>
+    </div>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Hourly Performance Bar Chart (Study Hours per Subject)
+        const hourlyCtx = document.getElementById('hourlyPerformanceChart').getContext('2d');
+        new Chart(hourlyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wedensday', 'thursday','friday','saturday','sunday'],
+                datasets: [{
+                    label: 'Study Hours (hours)',
+                    data: [15, 12, 10, 8 ,9, 11,7], // Example data for study hours per subject
+                    backgroundColor: '#3498db',
+                    borderColor: '#2980b9',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 20, // Adjust based on your data range
+                        title: { display: true, text: 'Hours' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false }
+                }
+            }
+        });
+
+        // Overall Performance Line Chart (Progress Over Time)
+        const overallCtx = document.getElementById('overallPerformanceChart').getContext('2d');
+        new Chart(overallCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'],
+                datasets: [{
+                    label: 'Progress (%)',
+                    data: [70, 75, 80, 85, 88], // Example data for overall progress
+                    borderColor: '#27ae60',
+                    backgroundColor: 'rgba(39, 174, 96, 0.2)',
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: { display: true, text: 'Progress (%)' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

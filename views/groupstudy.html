@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Study</title>
+    <link rel="stylesheet" href="css/def.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/studygroup.css">
+</head>
+
+<body>
+
+    <header class="fixed flex flex-y-center w100 bb pad-1" style="height: 7vh; top: 0;">
+        <div id="homepage" class="flex flex-left flex-grow-1 hover">
+            <h1>Study</h1>
+        </div>
+        <div class="flex-grow-1">Dashboard</div>
+        <div class="flex flex-right">
+            <svg class="nb" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="#1f1f1f">
+                <path
+                    d="M400-120q-66 0-113-47t-47-113q0-66 47-113t113-47q23 0 42.5 5.5T480-418v-422h240v160H560v400q0 66-47 113t-113 47Z" />
+            </svg>
+            <svg class="nb" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="#1f1f1f">
+                <path
+                    d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
+            </svg>
+        </div>
+        <script>
+            document.getElementById("homepage").addEventListener('click', () => { window.location.href = '/dashboard'; })
+        </script>
+    </header>
+
+    <main class="flex w100 h100" style="margin-top: 7vh;">
+        <section class="s1 bb pad-5 flex flex-y flex-grow-3 mar-lr bb pad-1" style="height: 93vh; border-radius: 30px;">
+
+            <div class="flex flex-x">
+                <div class="flex flex-x-center flex-y-center flex-grow-1">
+                    <div class="video-container flex-grow-1 mar-lr">
+                        <video class="white" src=""></video>
+                    </div>
+                    <div class="video-container flex-grow-1  mar-lr">
+                        <video class="white" src=""></video>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="flex flex-y flex-right flex-grow-1  mar-lr s1 bb pad-1"
+            style="height: 93vh; width: 20vw;  border-radius: 30px;">
+            <div class="flex-grow-1 mar-1">
+                <div class="">
+                    <div class="player-controls">
+                        <select id="track-select" class="track-select flex flex-y">
+                            <option value="rain">Rain</option>
+                            <option value="white-noise">White Noise</option>
+                        </select>
+                        <div class="flex" style="justify-content: space-between;">
+                            <button id="play-btn" class="play-btn">Play</button>
+                            <button id="pause-btn" class="pause-btn">Pause</button>
+                        </div>
+                    </div>
+                    <audio id="audio-player" loop>
+                        <source id="audio-source" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                            type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="flex-grow-1 mar-1" style="border-top: 1px solid gray;">
+                <div class="flex-grow-1 mar-1 timer-container" id="timer">
+                    <span id="timer-display">00:00</span>
+                </div>
+
+                <div class="timer-controls">
+                    <button class="button" id="startPauseBtn">Start</button>
+                    <button class="button" id="resetBtn">Reset</button>
+                </div>
+            </div>
+
+
+            <div class="flex flex-y flex-grow-3 mar-1" style="border-top: 1px solid gray; overflow-x: hidden;">
+                <div id="aiconversation" class="flex-grow-1">
+                    <pre>AI : Hi There, How can I help you?</pre>
+                </div>
+                <div id="askai" class="flex relative">
+                    <div class="flex-grow-1">
+                        <textarea id="aiprompt" class="w100" rows="3" name=""
+                            style="width: 100%; box-sizing: border-box;"></textarea>
+                    </div>
+                    <div id="askreq" class="absolute hover" style="bottom: 0; right: 0;" onclick="sendRequest()">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                            fill="#1f1f1f">
+                            <path
+                                d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Audio source URLs for the different tracks
+                const tracks = {
+                    "rain": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", // Replace with actual sound URL
+                    "white-noise": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", // Replace with actual sound URL
+                };
+        
+                // Elements
+                const playButton = document.getElementById('play-btn');
+                const pauseButton = document.getElementById('pause-btn');
+                const audioPlayer = document.getElementById('audio-player');
+                const audioSource = document.getElementById('audio-source');
+                const trackSelect = document.getElementById('track-select');
+        
+                // Play button functionality
+                playButton.addEventListener('click', () => {
+                    audioPlayer.play();
+                    playButton.disabled = true;
+                    pauseButton.disabled = false;
+                });
+        
+                // Pause button functionality
+                pauseButton.addEventListener('click', () => {
+                    audioPlayer.pause();
+                    playButton.disabled = false;
+                    pauseButton.disabled = true;
+                });
+        
+                // Track selection functionality
+                trackSelect.addEventListener('change', (e) => {
+                    const selectedTrack = e.target.value;
+                    audioSource.src = tracks[selectedTrack];
+                    audioPlayer.load(); // Reload audio with new source
+                    if (!audioPlayer.paused) {
+                        audioPlayer.play(); // Continue playing the new track if already playing
+                    }
+                });
+        
+            </script>
+        
+            <script>
+                let timerInterval;
+                let isRunning = false;
+                let seconds = 0;
+                let minutes = 0;
+        
+                // Function to update the timer display
+                function updateDisplay() {
+                    const display = document.getElementById('timer-display');
+                    let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+                    let formattedSeconds = seconds < 10 ? '0' + seconds : seconds;
+                    display.textContent = `${formattedMinutes}:${formattedSeconds}`;
+                }
+        
+                // Function to start or pause the timer
+                function toggleTimer() {
+                    if (isRunning) {
+                        clearInterval(timerInterval);
+                        document.getElementById('startPauseBtn').textContent = 'Start';
+                    } else {
+                        timerInterval = setInterval(function () {
+                            seconds++;
+                            if (seconds === 60) {
+                                seconds = 0;
+                                minutes++;
+                            }
+                            updateDisplay();
+                        }, 1000);
+                        document.getElementById('startPauseBtn').textContent = 'Pause';
+                    }
+                    isRunning = !isRunning;
+                }
+        
+                // Function to reset the timer
+                function resetTimer() {
+                    clearInterval(timerInterval);
+                    seconds = 0;
+                    minutes = 0;
+                    updateDisplay();
+                    document.getElementById('startPauseBtn').textContent = 'Start';
+                    isRunning = false;
+                }
+        
+                // Event listeners for the buttons
+                document.getElementById('startPauseBtn').addEventListener('click', toggleTimer);
+                document.getElementById('resetBtn').addEventListener('click', resetTimer);
+        
+                // Initialize the display
+                updateDisplay();
+            </script>
+        
+            <script>
+                // Function to send the request to the server when either Enter is pressed or the send button is clicked
+                document.getElementById("aiprompt").addEventListener("keypress", function (event) {
+                    if (event.key === "Enter" && !event.shiftKey) {  // Trigger on Enter (without Shift key)
+                        event.preventDefault();  // Prevent the default Enter key behavior (new line)
+                        sendRequest();
+                    }
+                });
+        
+                // Function to handle sending the request to the backend
+                async function sendRequest() {
+                    const prompt = document.getElementById("aiprompt").value.trim();
+                    if (prompt === "") return;  // Don't send empty prompts
+        
+                    try {
+                        // Send POST request to backend
+                        const response = await fetch('/ai', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ prompt }),
+                        });
+        
+                        const data = await response.json();
+        
+                        // Display the response in the conversation area
+                        // Display the response in the conversation area
+                        const conversation = document.getElementById("aiconversation");
+                        const userMessage = document.createElement("pre");
+                        userMessage.classList.add("wrap-text")
+                        userMessage.textContent = `You: ${prompt}`;
+                        conversation.appendChild(userMessage);
+
+                        const aiMessage = document.createElement("pre");
+                        aiMessage.classList.add("wrap-text")
+                        aiMessage.textContent = `AI: ${data.response}`;  // Assuming the response from AI is in `data.response`
+                        conversation.appendChild(aiMessage);
+        
+                        // Clear the textarea after sending
+                        document.getElementById("aiprompt").value = "";
+                    } catch (error) {
+                        console.error("Error:", error);
+                    }
+                }
+            </script>
+
+        </section>
+    </main>
+
+
+
+
+</body>
+
+</html>

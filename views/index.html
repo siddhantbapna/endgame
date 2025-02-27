@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="css/def.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <header class="flex pad-2 flex-x-center flex-y-center s2">
+        <div class="flex flex-left flex-grow-1" style="font-size: 30px; font-weight: 600;">Study</div>
+        <div id="GetStarted" class="flex flex-right hover">Try Study</div>
+    </header>
+
+    <main>
+        <section class="s2 flex flex-x-center flex-y-center" style="height: 80vh; width: 100%;">
+            <div class="white single pad-5 bb" style="width: 70%; height: 90%">Welcome to study with me</div>
+        </section>
+        <section class="s1 flex flex-x-center flex-y-center" style="height: 80vh; width: 100%;">
+            <div class="white single pad-5 bb" style="width: 70%; height: 90%">Welcome to study with me</div>
+        </section>
+        <section class="s2 flex flex-x-center flex-y-center" style="height: 80vh; width: 100%;">
+            <div class="white single pad-5 bb" style="width: 70%; height: 90%">Welcome to study with me</div>
+        </section>
+        <section class="s1 flex flex-x-center flex-y-center" style="height: 80vh; width: 100%;">
+            <div class="white single pad-5 bb" style="width: 70%; height: 90%">Welcome to study with me</div>
+        </section>
+        <section class="black flex flex-x-center flex-y-center" style="height: 20vh; width: 100%;">
+            <div class="black single  bb" style="width: 70%; height: 50%">Team Study</div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelector("#GetStarted").addEventListener('click', () => {
+            window.open("/dashboard")
+        })
+    </script>
+
+</body>
+</html>

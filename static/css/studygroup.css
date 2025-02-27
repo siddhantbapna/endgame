@@ -1,0 +1,21 @@
+.video-container video {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    width: 70%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+video {
+    object-fit: contain;
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+
+.video-container {
+    position: relative;
+    width: 30%;
+    aspect-ratio: 4 / 5;
+}
